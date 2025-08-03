@@ -9,8 +9,10 @@ if "chat_history" not in st.session_state:
 def predict_food_demand(population, income, month, last_demand):
     # Dummy prediction logic (replace with your ML model)
     base = 1000
-    season_factor = 1.2 if month == "August" else 1.0
-    prediction = base * season_factor * (population / 1000)
+    if (month == "August"):
+        season_factor =1.2
+    else : season_factor=1.0
+    prediction = round(last_demand* season_factor * (population / 1000))
     return round(prediction)
 
 # Input fields with session_state to remember values
